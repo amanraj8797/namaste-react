@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Namaster React</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1 id="header">Top of root</h1>
+  <div id="root"><h1>hey 1</h1></div>
+  <div>
+    <h1>If there is any thing avialable here, it will be replaced by the content that is going to render by root(if it the 1st or only one id="root")...</h1>
+  </div>
+  <h1>bottom of root</h1>
+
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- <script>
+
+    // creating element in react using cdn
+    const heading = React.createElement('h1', {}, "Hello form React!");
+
+    // creating root
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+
+    // inserting element in the root (node)
+    root.render(heading);
+
+  </script> -->
+
+  <!-- <script src="./react-cdn.js"></script> -->
+   <script src="./nested-elements.js"></script>
+</body>
+</html>
