@@ -1,0 +1,148 @@
+JSX Patterns Every React Developer Uses ⚛️
+
+JSX allows you to embed JavaScript expressions inside {}. These patterns are very common in real-world React applications.
+
+1️⃣ Rendering Variables in JSX
+
+You can display JavaScript variables inside JSX using {}.
+
+Example
+function App() {
+  const name = "Rahul";
+
+  return <h1>Hello {name}</h1>;
+}
+Output
+Hello Rahul
+
+You can also perform calculations.
+
+function App() {
+  return <div>{5 + 10}</div>;
+}
+
+Output:
+15
+
+2️⃣ Calling Functions Inside JSX
+
+Functions defined inside a component can be called inside JSX.
+
+Example
+function App() {
+  const greet = () => "Good Morning";
+
+  return <h1>{greet()}</h1>;
+}
+Key Idea
+
+JSX allows function calls, but not function declarations.
+
+❌ Not allowed
+
+<div>
+{function add(){ return 1+2 }}
+</div>
+
+3️⃣ Conditional Rendering
+
+React commonly uses ternary operators for conditional UI.
+
+Example
+function App() {
+  const isLoggedIn = true;
+
+  return (
+    <div>
+      {isLoggedIn ? <h1>Welcome Back</h1> : <h1>Please Login</h1>}
+    </div>
+  );
+}
+Logical AND Pattern
+{isLoggedIn && <p>User is logged in</p>}
+
+If isLoggedIn is true → element renders.
+
+4️⃣ Rendering Lists with map()
+
+Used to render lists from arrays.
+
+Example
+function App() {
+  const fruits = ["Apple", "Banana", "Mango"];
+
+  return (
+    <ul>
+      {fruits.map((fruit, index) => (
+        <li key={index}>{fruit}</li>
+      ))}
+    </ul>
+  );
+}
+Important Rule ⚠️
+
+Always provide a key when rendering lists.
+
+<li key={index}>{fruit}</li>
+
+Keys help React identify which items changed.
+
+5️⃣ IIFE (Immediately Invoked Function Expression)
+
+Used when logic is complex and cannot be written directly in JSX.
+
+Example
+function App() {
+  const number = 5;
+
+  return (
+    <div>
+      {(() => {
+        if (number > 3) return "Greater than 3";
+        return "Less or equal to 3";
+      })()}
+    </div>
+  );
+}
+⭐ Bonus Pattern (Recommended)
+
+Compute values before JSX to keep JSX clean.
+
+Example
+function App() {
+  const price = 100;
+  const tax = price * 0.18;
+  const total = price + tax;
+
+  return <h1>Total: {total}</h1>;
+}
+
+Why This is Better:
+
+JSX stays clean
+
+Code becomes more readable
+
+Easier to debug
+
+🚫 JSX Rules to Remember ====
+
+Inside {} JSX allows:
+
+✔ Variables
+✔ Function calls
+✔ Expressions
+
+But not statements like:
+
+❌ function declaration
+❌ if statement
+❌ for loop
+
+Instead use:
+
+Ternary operator
+
+map()
+
+Logical &&

@@ -1,0 +1,20 @@
+{
+  "name": "ep3_laying_the-foundation",
+  "version": "1.0.0",
+  "description": "Learinig jsx",
+  "license": "ISC",
+  "author": "Aman Raj",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}

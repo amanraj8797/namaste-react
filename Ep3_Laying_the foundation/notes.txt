@@ -1,0 +1,208 @@
+React Notes (Based on App.js Code)
+
+1. React Element
+
+A React Element is a JavaScript object that represents a DOM node.
+
+Example using React.createElement:
+
+const heading = React.createElement(
+  "h1",
+  { id: "heading" },
+  "React rendered"
+);
+Key Points
+
+React elements are plain JavaScript objects.
+
+They describe what should appear on the screen.
+
+They are immutable (cannot be changed).
+
+2. React Element using JSX
+
+JSX is a syntax extension for JavaScript that makes writing React elements easier.
+
+Example:
+
+const jsxHeading = (
+  <>
+    <h1 id="heading" className="head">React rendered with jsx</h1>
+  </>
+);
+Key Points
+
+JSX looks like HTML but it is JavaScript.
+
+JSX gets transpiled by Babel into React.createElement.
+
+When writing multiple lines, wrap JSX in ().
+
+Example transformation:
+
+<h1>Hello</h1>
+
+becomes
+
+React.createElement("h1", {}, "Hello")
+3. JSX Rules
+
+Important JSX rules visible in your code:
+
+1. Use className instead of class
+<h1 className="head">Hello</h1>
+
+because class is a reserved keyword in JavaScript.
+
+2. Attributes use camelCase
+
+Examples:
+
+className
+onClick
+tabIndex
+3. Wrap multiple elements
+
+Use React Fragment
+
+<>
+  <h1>Hello</h1>
+  <h2>World</h2>
+</>
+
+or
+
+<React.Fragment>
+</React.Fragment>
+4. React Functional Components
+
+A React Component is a JavaScript function that returns JSX.
+
+Example from your code:
+
+const HeadingComponent2 = () => (
+  <>
+    <h1>Component 2 Heading component 2</h1>
+  </>
+);
+Key Points
+
+Components must start with Capital Letter
+
+They return JSX
+
+They can be reused multiple times
+
+5. Component Composition
+
+Component Composition means using one component inside another component.
+
+Example from your code:
+
+const HeadingComponent2 = () => (
+  <>
+    <HeadingComponenet1 />
+    <h1>After component 1</h1>
+  </>
+);
+
+Here:
+
+HeadingComponent2
+     ↓
+HeadingComponent1
+
+This builds a component hierarchy (tree).
+
+6. Using Components inside JSX Elements
+
+You used:
+
+const jsxHeading = (
+  <>
+    <ComponentInElement />
+    <h1>Before heading</h1>
+  </>
+);
+
+Here a component is used inside a React element.
+
+7. Using JavaScript inside JSX
+
+Inside JSX you can use JavaScript expressions using {}.
+
+Example from your code:
+
+function Component() {
+  function add() {
+    return 100 + 1;
+  }
+
+  return (
+    <>
+      <h1>Added value</h1>
+      {add()}
+    </>
+  );
+}
+Important Rule
+
+Inside {} you can use:
+
+✔ expressions
+✔ function calls
+✔ variables
+
+But not statements like loops or declarations.
+
+8. Different Ways to Use Components
+
+Your code shows two ways:
+
+1️⃣ Component Syntax (Correct)
+<Component />
+
+or
+
+<Component></Component>
+2️⃣ Calling like a Function
+{Component()}
+
+⚠ Not recommended because React loses lifecycle benefits.
+
+Preferred way:
+
+<Component />
+9. Rendering React Elements
+
+To render React to the DOM:
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+Then render:
+
+root.render(<Component3 />);
+10. React Rendering Flow (Your Code)
+Component3
+   ↓
+HeadingComponent2
+   ↓
+HeadingComponent1
+   ↓
+jsxHeading
+   ↓
+ComponentInElement
+
+React builds a Virtual DOM tree and then renders it to the real DOM.
+
+11. Console Output
+
+When you log:
+
+console.log(jsxHeading);
+
+You will see:
+
+JavaScript Object
+
+because React elements are objects.
