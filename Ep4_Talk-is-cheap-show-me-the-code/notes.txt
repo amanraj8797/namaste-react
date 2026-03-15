@@ -1,0 +1,307 @@
+1. Is JSX mandatory for React?
+
+❌ No, JSX is not mandatory for React.
+
+React can be written using React.createElement().
+
+Example without JSX
+
+const heading = React.createElement("h1", {}, "Hello React");
+
+Example with JSX
+
+const heading = <h1>Hello React</h1>;
+Why JSX is used?
+
+Easier to write
+
+More readable
+
+Looks like HTML
+
+Cleaner UI structure
+
+JSX is converted into React.createElement() using Babel.
+
+2. Is ES6 mandatory for React?
+
+❌ No, ES6 is not mandatory, but it is highly recommended.
+
+React can work with older JavaScript, but modern React development uses ES6 features like:
+
+Arrow Functions
+
+Destructuring
+
+Modules (import/export)
+
+Template literals
+
+Spread operator
+
+Example:
+
+const Header = () => <h1>Foodie</h1>;
+3. {TitleComponent} vs {<TitleComponent/>} vs {<TitleComponent></TitleComponent>}
+
+Assume:
+
+const TitleComponent = () => <h1>Foodie</h1>;
+1️⃣ {TitleComponent}
+
+This returns the function reference, not the component output.
+
+{TitleComponent}
+
+Output → Nothing rendered.
+
+2️⃣ {<TitleComponent/>}
+
+This executes the component and renders JSX.
+
+<TitleComponent />
+
+Output:
+
+Foodie
+3️⃣ {<TitleComponent></TitleComponent>}
+
+Same as above.
+
+<TitleComponent></TitleComponent>
+
+Both are equivalent.
+
+Self-closing tag is preferred.
+
+4. How can I write comments in JSX?
+
+Use curly braces + JavaScript comment syntax.
+
+Example:
+
+{/* This is a JSX comment */}
+<h1>Hello</h1>
+
+Normal JS comments won’t work inside JSX.
+
+❌ Wrong
+
+<!-- comment -->
+5. What is <React.Fragment> and <> </> ?
+
+Fragments allow grouping multiple elements without adding extra DOM nodes.
+
+Example without fragment:
+
+<div>
+  <h1>Hello</h1>
+  <p>World</p>
+</div>
+
+This creates an extra div in DOM.
+
+Using fragment:
+
+<React.Fragment>
+  <h1>Hello</h1>
+  <p>World</p>
+</React.Fragment>
+
+Short syntax:
+
+<>
+  <h1>Hello</h1>
+  <p>World</p>
+</>
+
+✔ No extra DOM element
+✔ Cleaner DOM
+
+6. What is Virtual DOM?
+
+Virtual DOM is a lightweight copy of the real DOM stored in memory.
+
+Instead of updating the entire DOM, React:
+
+Updates Virtual DOM
+
+Compares with previous Virtual DOM
+
+Updates only changed elements
+
+Benefits:
+
+Faster rendering
+
+Efficient updates
+
+Better performance
+
+7. What is Reconciliation in React?
+
+Reconciliation is the process React uses to compare the old Virtual DOM with the new Virtual DOM.
+
+Steps:
+
+1️⃣ React creates new Virtual DOM
+2️⃣ Compares it with old Virtual DOM
+3️⃣ Finds differences (diffing algorithm)
+4️⃣ Updates only changed parts in the real DOM
+
+This makes React very fast.
+
+8. What is React Fiber?
+
+React Fiber is the new reconciliation engine introduced in React 16.
+
+It improves:
+
+Rendering performance
+
+Scheduling updates
+
+UI responsiveness
+
+Key features:
+
+Incremental rendering
+
+Ability to pause and resume work
+
+Better handling of animations
+
+9. Why we need keys in React?
+
+Keys help React identify which elements changed, added, or removed.
+
+Example:
+
+{items.map(item => (
+  <li key={item.id}>{item.name}</li>
+))}
+
+Benefits:
+
+Faster updates
+
+Efficient DOM diffing
+
+Prevent unnecessary re-render
+
+10. When do we need keys in React?
+
+Keys are needed when rendering lists of components.
+
+Example:
+
+map()
+filter()
+loop
+
+Example:
+
+{resList.map((restaurant) => (
+  <Restaurants key={restaurant.id}/>
+))}
+11. Can we use index as keys in React?
+
+⚠️ Not recommended.
+
+Example:
+
+key={index}
+
+Problems:
+
+Incorrect UI updates
+
+Performance issues
+
+Bugs when list order changes
+
+✔ Best practice
+
+Use unique ID
+
+Example:
+
+key={restaurant.id}
+12. What is Props in React?
+
+Props (Properties) are used to pass data from parent component to child component.
+
+Example:
+
+Parent
+
+<Restaurants name="KFC" rating="4.2" />
+
+Child
+
+const Restaurants = (props) => {
+  return <h1>{props.name}</h1>;
+};
+Ways to use props
+
+1️⃣ Using props object
+
+props.name
+
+2️⃣ Destructuring props
+
+const {name, rating} = props;
+
+3️⃣ Direct destructuring in parameter
+
+const Restaurants = ({name, rating}) => {}
+13. What is Config Driven UI?
+
+Config Driven UI means UI is controlled by data instead of hardcoded components.
+
+Example:
+
+Instead of writing multiple restaurant cards manually:
+
+<Restaurants name="KFC"/>
+<Restaurants name="McDonald's"/>
+<Restaurants name="Pizza Hut"/>
+
+We use data:
+
+const resList = [ ... ]
+
+Then render using map():
+
+{resList.map((restaurant) => (
+  <Restaurants resObj={restaurant}/>
+))}
+
+Benefits:
+
+Dynamic UI
+
+Scalable
+
+Easy API integration
+
+Real-world apps use this
+
+Examples:
+
+Swiggy
+
+Netflix
+
+Amazon
+
+Quick Summary
+Concept	Meaning
+JSX	HTML inside JavaScript
+Virtual DOM	Lightweight copy of DOM
+Reconciliation	DOM comparison process
+React Fiber	New React rendering engine
+Props	Data passing between components
+Keys	Unique identifier for list elements
+Fragments	Group elements without extra DOM
+Config Driven UI	UI controlled by data
