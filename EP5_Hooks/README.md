@@ -1,8 +1,3 @@
-Here is a **clean, well-structured `README.md` code** for your **Namaste React notes repository**.
-It includes **all the topics you asked for**: exports, config.js, hooks, useState, useEffect, virtual DOM, diffing algorithm, reconciliation, React Fiber, rules of hooks, and the **official + Medium links**.
-
-You can **copy the entire block and paste it directly into `README.md`**.
-
 ````markdown
 # Namaste React – Notes
 
@@ -548,3 +543,7 @@ Most commonly used Hooks:
 
 * `useState`
 * `useEffect`
+
+---
+AUTHOR
+Aman Raj
