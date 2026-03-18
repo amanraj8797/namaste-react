@@ -83,6 +83,9 @@
   justify-content: space-between;
 }
 
+.input-bar {
+  width: 90%;
+}
 .search-btn {
   width: 90px;
   background-color: white;

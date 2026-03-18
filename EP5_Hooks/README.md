@@ -524,6 +524,70 @@ You can use this plugin to detect Hook rule violations.
 eslint-plugin-react-hooks
 ```
 
+# Input file taken
+
+``` JavaScript
+import React, {
+    useState
+}
+from 'react';
+import './App.css';
+
+const FormExample = () => {
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+
+    // Event handlers to update state variables
+    const handleNameChange = (event) => {
+        setName(event.target.value);
+    };
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+
+
+    const handleSubmit = (event) => {
+        // Prevent default form submission
+        event.preventDefault();
+        console.log('Name:', name);
+        console.log('Email:', email);
+    };
+
+    return (
+        <div className="form-container">
+            <h2>Input Form</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Name:</label>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={handleNameChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={handleEmailChange}
+                    />
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    );
+};
+
+export default FormExample;
+```
+
+```
+Reference 1: https://www.geeksforgeeks.org/reactjs/how-to-handle-input-forms-with-usestate-hook-in-react/
+Reference 2: https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable
+```
 # Summary
 
 React works efficiently because of:

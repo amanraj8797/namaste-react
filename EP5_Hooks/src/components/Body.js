@@ -26,11 +26,26 @@ const Body = () => {
     console.log(filteredList);
   }
 
+  // taking input value and storing to a state variable
+  const [input, setInput] = useState(""); 
+
+  // storing the input field value in state variable
+  const takingInput = (e) => {
+    setInput(e.target.value);
+    console.log(input);
+  }
+
+  // handling submit = when we submit, the site doesn't refresh
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <div className="body">
-      <div className="body-search">search here
+      <form className="body-search" onSubmit={handleSubmit}>
+        <input className="input-bar" type="text" value={input} onChange={takingInput}></input>
         <button className="search-btn">Search</button>
-      </div>
+      </form>
       <button className="filter-btn" onClick={filterCallback}>Filter</button>
       <div className="res-container">
 
