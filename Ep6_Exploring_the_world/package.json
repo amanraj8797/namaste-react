@@ -1,0 +1,21 @@
+{
+  "name": "ep6_exploring_the_world",
+  "version": "1.0.0",
+  "description": "Learing monolithic and microservices architecture and try how to implement",
+  "license": "ISC",
+  "author": "Aman Raj",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}

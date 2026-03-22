@@ -1,0 +1,406 @@
+# 🏗️ Monolithic vs Microservices Architecture Notes
+
+This document contains clear and structured notes on **Monolithic** and **Microservices Architecture**, useful for learning, revision, and interviews.
+
+---
+
+# 📌 What is Software Architecture?
+
+Software architecture defines:
+
+* How an application is structured
+* How components interact
+* How the system is deployed and scaled
+
+Two common architectures:
+
+* 🧱 Monolithic Architecture
+* ⚙️ Microservices Architecture
+
+---
+
+# 🧱 Monolithic Architecture
+
+## 🔹 Definition
+
+A **monolithic architecture** is a single unified application where all components are tightly coupled and run as one service.
+
+---
+
+## 🔹 Structure
+
+```
+[ UI ] + [ Business Logic ] + [ Database ] → Single Application
+```
+
+---
+
+## 🔹 Example
+
+E-commerce application:
+
+* User authentication
+* Product listing
+* Cart
+* Payment
+
+➡️ All modules exist inside one codebase
+
+---
+
+## ✅ Advantages
+
+* Simple to develop
+* Easy to deploy (single deployment)
+* Faster communication (no network calls)
+* Easy debugging (everything in one place)
+
+---
+
+## ❌ Disadvantages
+
+* Hard to scale (must scale entire app)
+* Tightly coupled code
+* Difficult to maintain for large systems
+* Slower development for large teams
+
+---
+
+## 📌 When to Use
+
+* Small projects
+* Beginner-level applications
+* Startups (initial phase)
+* Small teams
+
+---
+
+# ⚙️ Microservices Architecture
+
+## 🔹 Definition
+
+Microservices architecture breaks an application into **small independent services**, each responsible for a specific functionality.
+
+---
+
+## 🔹 Structure
+
+```
+[ Auth Service ]
+[ Product Service ]
+[ Order Service ]
+[ Payment Service ]
+
+→ Communicate via APIs
+```
+
+---
+
+## 🔹 Example
+
+E-commerce app split into:
+
+* User Service
+* Product Service
+* Cart Service
+* Payment Service
+
+---
+
+## ✅ Advantages
+
+* Highly scalable (scale specific service)
+* Independent deployment
+* Fault isolation (one service failure ≠ whole system down)
+* Technology flexibility (different tech stacks)
+* Faster development with multiple teams
+
+---
+
+## ❌ Disadvantages
+
+* Complex system design
+* Network latency
+* Hard debugging (distributed system)
+* Deployment complexity (CI/CD, Docker, etc.)
+* Data consistency challenges
+
+---
+
+## 📌 When to Use
+
+* Large-scale applications
+* High traffic systems
+* Multiple development teams
+* Systems requiring scalability
+
+---
+
+# ⚔️ Key Differences
+
+| Feature     | Monolithic           | Microservices                   |
+| ----------- | -------------------- | ------------------------------- |
+| Structure   | Single app           | Multiple services               |
+| Deployment  | One unit             | Independent                     |
+| Scalability | Entire app           | Individual services             |
+| Complexity  | Low                  | High                            |
+| Performance | Faster (local calls) | Slightly slower (network calls) |
+| Maintenance | Hard (large apps)    | Easier (modular)                |
+| Team Size   | Small                | Large                           |
+
+---
+
+# 🔁 Why Move to Microservices?
+
+As applications grow:
+
+* Monolith becomes hard to manage and scale
+* Development slows down
+
+Microservices provide:
+
+* Flexibility
+* Independent scaling
+* Faster releases
+
+---
+
+# 🧠 Important Concepts
+
+## 🔸 Tight Coupling vs Loose Coupling
+
+* Monolithic → Tightly coupled
+* Microservices → Loosely coupled
+
+---
+
+## 🔸 Deployment
+
+* Monolithic → Deploy entire application
+* Microservices → Deploy individual services
+
+---
+
+## 🔸 Failure Handling
+
+* Monolithic → One failure may crash entire system
+* Microservices → Failure isolated to one service
+
+---
+
+# 🎯 Conclusion
+
+There is no one-size-fits-all solution:
+
+✔️ Use **Monolithic Architecture**:
+
+* For simplicity
+* Small applications
+* Early-stage startups
+
+✔️ Use **Microservices Architecture**:
+
+* For scalability
+* Large applications
+* Multiple teams
+
+---
+
+# 🚀 Best Practice
+
+👉 Start with a **Monolith**
+👉 Gradually transition to **Microservices** as the system grows
+
+---
+
+# 🎯 Interview Summary
+
+* Monolith = Single tightly coupled application
+* Microservices = Independent loosely coupled services
+* Monolith → Simple but less scalable
+* Microservices → Scalable but complex
+
+---
+
+```
+# 🧠 Separation of Concerns (SoC)
+
+---
+
+# 📌 What is Separation of Concerns?
+
+**Separation of Concerns (SoC)** is a design principle that states:
+
+> Divide a system into smaller parts where each part handles a specific responsibility.
+
+---
+
+# 🎯 Simple Meaning
+
+Instead of writing everything in one place ❌
+We split responsibilities into different sections ✅
+
+👉 Each part focuses on **one concern only**
+
+---
+
+# 💡 Real-Life Example
+
+Think of a **restaurant**:
+
+* 👨‍🍳 Chef → cooks food
+* 🧾 Waiter → takes orders
+* 💳 Cashier → handles payment
+
+👉 Everyone has a **separate responsibility**
+
+---
+
+# 🧱 In Software Development
+
+Example (Web App):
+
+* 🎨 Frontend → UI (React)
+* ⚙️ Backend → Logic (Node/Java)
+* 🗄️ Database → Data storage
+
+👉 Each layer handles a different concern
+
+---
+
+# 🔥 Example Without SoC (Bad Practice)
+
+```javascript
+// Everything mixed together ❌
+function handleUser() {
+  // UI logic
+  document.write("User logged in");
+
+  // Business logic
+  if (user.age > 18) {
+    // Database logic
+    saveToDatabase(user);
+  }
+}
+```
+
+---
+
+# ✅ Example With SoC (Good Practice)
+
+```javascript
+// Separated concerns ✅
+
+// UI Layer
+function displayUser() {
+  console.log("User logged in");
+}
+
+// Business Logic Layer
+function validateUser(user) {
+  return user.age > 18;
+}
+
+// Data Layer
+function saveUser(user) {
+  // save to DB
+}
+```
+
+---
+
+# 🏗️ SoC in Different Architectures
+
+## 🧱 Monolithic
+
+* Separation exists but within one codebase
+* Layers:
+
+  * Controller
+  * Service
+  * Repository
+
+---
+
+## ⚙️ Microservices
+
+* Strong separation
+* Each service = one concern
+
+Example:
+
+* Auth Service → login
+* Payment Service → payments
+* Order Service → orders
+
+---
+
+# ✅ Advantages
+
+* Easier to maintain
+* Better readability
+* Easier debugging
+* Code reusability
+* Scalable systems
+* Teams can work independently
+
+---
+
+# ❌ Disadvantages
+
+* Slight increase in complexity
+* Requires proper design planning
+
+---
+
+# 🔑 Related Concepts
+
+## 🔸 Single Responsibility Principle (SRP)
+
+* One class → one responsibility
+
+## 🔸 Modularization
+
+* Breaking code into modules
+
+## 🔸 Loose Coupling
+
+* Components are independent
+
+---
+
+# 🎯 Real Interview Definition
+
+👉 **Separation of Concerns is a design principle where a system is divided into distinct sections, each handling a specific responsibility, making the system easier to maintain, scale, and understand.**
+
+---
+
+--- Stale state: 
+
+  => using an outdated (old) value of state instead of the latest one
+  => React state updates are asynchronous
+  👉 So state doesn’t update immediately after setState
+
+Resource: https://medium.com/@shanakaprince/understanding-stale-state-in-react-and-how-to-avoid-it-a74cc4655c43
+
+---
+
+==>> Microservices interact via APIs or events, and when a user uses an app, multiple services collaborate behind the scenes to complete one task.
+
+
+# 🚀 Quick Summary
+
+* Divide system into smaller parts
+* Each part has one responsibility
+* Improves maintainability & scalability
+* Used in both Monolith & Microservices
+
+```
+
+# 📚 Reference
+
+* Based on explanation of Monolithic vs Microservices Architecture concepts
+
+=> Reference link: https://www.youtube.com/watch?v=wVeUtLREe1Y
+
+---
