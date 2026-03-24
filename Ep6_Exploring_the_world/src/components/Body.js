@@ -101,7 +101,6 @@ const Body = () => {
     setAllResturentList(resturentList2);
     setResturentList(resturentList2);
 
-
   }
 
 
