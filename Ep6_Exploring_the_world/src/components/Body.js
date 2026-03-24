@@ -2,6 +2,7 @@ import Restaurants from "./Restaurants";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGI_API } from "../utils/constants";
+import { SWIGGI_API_2 } from "../utils/constants";
 
 const Body = () => {
 
@@ -36,23 +37,24 @@ const Body = () => {
 
   // useEffect
   useEffect(()=> {
-    fetchData();
+    fetchData1();
   }, []);
 
-  const fetchData = async () => {
+  const fetchData1 = async () => {
 
-    let data;
+    console.log("Use effect callback called")
+
+    let data = await fetch(SWIGGI_API);
     
     // used to handle error if the promise gets reject
-    try {
-      data = await fetch(SWIGGI_API);
-    } catch(err) {
-      console.log(err);
+    if(!data.ok) {
+      console.log("Not get the response");
+      return;
     }
 
     console.log(data);
 
-    // data is a readable stream
+    // data is a readable stream not in readable form
     const json = await data.json();
 
     const val = json?.data?.cards;
@@ -70,6 +72,39 @@ const Body = () => {
     setResturentList(list);
     setAllResturentList(list);
   }
+
+  useEffect(() => {
+    fetchData2();
+  }, []);
+
+  const fetchData2 = async () => {
+
+    const data = await fetch(SWIGGI_API_2);
+
+    if(!data.ok) {
+      console.log("Unable to feach data from url 2");
+      return;
+    }
+
+    const json = await data.json();
+
+    console.log("API 2");
+
+    console.log(json);
+
+    const resturentList2 = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+    // const merge = [...resturentList2, ...resturentList]
+
+    // console.log(merge);
+
+    setAllResturentList(resturentList2);
+    setResturentList(resturentList2);
+
+
+  }
+
+
 
   console.log("After use effect hook");
 
