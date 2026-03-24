@@ -38,6 +38,12 @@ const Body = () => {
   // useEffect
   useEffect(()=> {
     fetchData1();
+
+    console.log("Before clean up function in feach 1");
+
+    return () => {
+      console.log("Unmounting");
+    }
   }, []);
 
   const fetchData1 = async () => {
@@ -75,7 +81,16 @@ const Body = () => {
 
   useEffect(() => {
     fetchData2();
-  }, []);
+
+    console.log("Before clean up function in feach 2");
+    
+    // this code of clean up function will not run during mounting phase
+    // but whole effect callback will execute after each time it execute even clean up function and also at unmounting phase...
+    // But after mounting ever execution of the effect function code, 1stly the clean up function code will be executed then the else code
+    return () => {
+      console.log("Unmounting");
+    }
+  }, [input]);
 
   const fetchData2 = async () => {
 
