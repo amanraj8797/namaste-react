@@ -327,3 +327,5 @@ Parcel acts as an orchestrator that combines many tools together.
 🧠 One-Line Summary
 
 Parcel is a zero-configuration bundler that automatically handles development server, HMR, caching, optimization, and production builds for modern web applications.
+
+Hot reloading - Parcel also integrates with React Fast Refresh and the Vue Hot Reloading API to automatically preserve your application state between updates.
